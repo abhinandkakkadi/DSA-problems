@@ -49,6 +49,32 @@ func main() {
 	k :=3
 	rotate(arr8,k)
 	fmt.Println(arr8)
+
+
+	// median of an array
+	arr9 := []int{1,2,3,4,5}
+	m := median(arr9)
+	fmt.Println("hey ",m)
+
+	// remove duplicates from a sorted array
+	arr10 := []int{1,1,2,2,3,3,4,4}
+	d,size := removeDuplicates(arr10,len(arr10))
+	for i:=0; i<size; i++ {
+		fmt.Println(d[i])
+	}
+
+	// quick sort
+	arr11 := []int{33,123,1,32,112,123,1}
+	quickSort(arr11,0,len(arr)-1)
+	fmt.Println(arr11)
+
+	// GCD of 2 numbers
+	num1,num2 := 3,6
+	fmt.Println(gcd(num1,num2))
+
+	// Armstrong number
+	num := 407
+	fmt.Println(armStrong(num))
 }
 
 // second smallest element in an array
@@ -194,4 +220,99 @@ func rotate(arr8 []int, k int) {
 		arr8[len(arr8)-1] = temp
 		k--
 	}
+}
+
+// median
+
+func median(arr9 []int) float64 {
+	l1 := arr9[(len(arr9)/2)+1]
+	
+	if len(arr9)%2 == 1 {
+		return float64(l1)
+	} else {
+		l2 := arr9[len(arr9)/2]
+		return float64((l1+l2)/2)
+	}
+}
+
+// Remove duplicates
+
+func removeDuplicates(arr10 []int, size int) ([]int,int) {
+
+	i := 0
+	for j := 1; j < size; j++ {
+
+		if arr10[i] != arr10[j] {
+			i++
+			arr10[i] = arr10[j]
+		}
+	}
+	return arr10,i+1
+}
+
+// quick sort
+
+func quickSort(arr []int,low int,high int) {
+
+	if low < high {
+
+		pivot := partition(arr,low,high)
+		quickSort(arr,pivot+1,high)
+		quickSort(arr,low,pivot-1)
+	}
+}
+
+func partition(arr []int,low int,high int) int {
+
+	pivot := arr[high]
+	i := low - 1
+
+	for j:=low; j < high; j++ {
+		if arr[j] < pivot {
+			i++
+			arr[i],arr[j] = arr[j],arr[i]
+		}
+	}
+	arr[i+1],arr[high] = arr[high],arr[i+1]
+	return i + 1
+}
+
+// GCD of 2 numbers
+
+func gcd(num1 int, num2 int) int {
+	var small int
+	var gcd int
+	if num1 < num2 {
+		small = num1
+	} else {
+		small = num2
+	}
+
+	for i:=1; i<=small; i++ {
+		if num1%i == 0 && num2%i == 0 {
+			gcd = i
+		}
+	}
+	return gcd 
+}
+
+// amrStrong
+
+func armStrong(num int) bool {
+	
+	check := 0
+	temp := num
+	var x int
+	for temp > 0 {
+		x = temp%10
+		check += x*x*x
+		temp = temp/10
+	}
+
+	if check == num {
+		return true
+	} else {
+		return false
+	}
+
 }
