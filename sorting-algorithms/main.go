@@ -23,5 +23,11 @@ func main() {
 	algorithm.InsertionSort(arr3,len(arr3))
 	fmt.Println(arr3)
 
+	// quick sort
+	arr4 := []int{3453,2,23,1,11,123,2,45}
+	algorithm.QuickSort(arr4,0,len(arr4)-1)
+	fmt.Println(arr4)
 
 }
+
+

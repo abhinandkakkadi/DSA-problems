@@ -53,3 +53,32 @@ func InsertionSort(arr []int, size int) {
 	}
 
 }
+
+// quick sort
+
+func QuickSort(arr []int,l int,h int) {
+
+	if l < h {
+		pivot := partition(arr,l,h) 
+		QuickSort(arr,l,pivot-1)
+		QuickSort(arr,pivot+1,h)
+	}
+}
+
+func partition(arr []int, l int, h int) int {
+
+	pivot := arr[h]
+	i := l - 1
+
+	for j:=l; j<h; j++ {
+		
+		if arr[j] < pivot {
+			i++
+			arr[i],arr[j] = arr[j],arr[i]
+		}
+	}
+
+	arr[i+1],arr[h] = arr[h],arr[i+1]
+
+	return i + 1
+}
