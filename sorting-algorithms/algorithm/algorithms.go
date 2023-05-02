@@ -82,3 +82,44 @@ func partition(arr []int, l int, h int) int {
 
 	return i + 1
 }
+
+// merge sort
+
+func MergeSort(arr []int,l int, h int) {
+
+	if l < h {
+		mid := (l+h)/2
+		MergeSort(arr,l,mid)
+		MergeSort(arr,mid+1,h)
+		Merge(arr,l,mid,h)
+	}
+}
+
+func Merge(arr []int, l int, mid int, h int) {
+
+	i := l
+	j := mid + 1
+	var b []int
+	for i <= mid && j <= h {
+		if arr[i] <= arr[j] {
+			b = append(b, arr[i])
+			i++
+		} else {
+			b = append(b, arr[j])
+			j++
+		}
+		
+	}
+
+	for ; i<=mid; i++ {
+		b =append(b, arr[i])
+	}
+
+	for ; j <=h; j++ {
+		b = append(b, arr[j])
+	}
+
+	for i:=l; i <=h; i++ {
+		arr[i] = b[i-l]
+	}
+}

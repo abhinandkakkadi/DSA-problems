@@ -28,6 +28,11 @@ func main() {
 	algorithm.QuickSort(arr4,0,len(arr4)-1)
 	fmt.Println(arr4)
 
+	// Merge sort
+	arr5 := []int{3434,23,21,1,23,2,34}
+	algorithm.MergeSort(arr5,0,len(arr5)-1)
+	fmt.Println(arr5)
+
 }
 
 
