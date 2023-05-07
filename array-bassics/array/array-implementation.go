@@ -96,3 +96,91 @@ func MoveZeroes(arr []int) {
 		
 	}
 }
+
+// union of two array
+
+func UnionArray(arr1 []int, arr2 []int) []int {
+
+	l1 := len(arr1)
+	l2 := len(arr2)
+	var arr3 []int
+	k := 0
+	i := 0
+	j := 0
+	for i < l1 && j < l2  {
+
+		if arr1[i] <= arr2[j] {
+			if k==0 || arr3[k-1]!= arr1[i] {
+				arr3 = append(arr3, arr1[i])
+				k++
+				
+			}
+			i++
+			
+		} else {
+			if k==0 || arr3[k-1]!= arr2[j] {
+				arr3 = append(arr3, arr2[j])
+				k++
+				
+			}
+			j++
+		}
+
+		
+
+	}
+
+	for ;i < l1; i++ {
+		if k==0 || arr3[k-1]!= arr1[i] {
+			arr3 = append(arr3, arr1[i])
+			k++
+		}
+	}
+
+	for ;j < l2; j++ {
+		if k==0 || arr3[k-1]!= arr2[j] {
+			arr3 = append(arr3, arr2[j])
+			k++
+		}
+	}
+
+	return arr3
+
+}
+
+
+// Intersection array
+
+func IntersectionArray(arr1 []int,arr2 []int) []int {
+
+	i := 0
+	j := 0
+	k := 1
+	var arr3 []int
+
+	for i < len(arr1) && j < len(arr2) {
+
+		if arr1[i] == arr2[j] {
+
+			if k == 0 {
+				arr3 = append(arr3,arr1[i])
+				i++
+			} else {
+				if arr3[k-1] != arr1[i] {
+					arr3 = append(arr3,arr1[i])
+					i++
+				}
+			}
+			
+		}
+
+		if arr1[i] < arr2[j] {
+			i++
+		} else {
+			j++
+		}
+
+	}
+
+	return arr3
+}

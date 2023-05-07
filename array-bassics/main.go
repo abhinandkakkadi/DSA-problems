@@ -34,4 +34,22 @@ func main() {
 	array.MoveZeroes(arr5)
 	fmt.Println(arr5)
 
+
+	// union of two sorted array
+
+	arr6 := []int{1,2,3,3,4}
+	arr7 := []int{1,2,3,4,5,6,8}
+	unionArray := array.UnionArray(arr6,arr7)
+	fmt.Println(unionArray)
+
+	// Interstion of 2 arrys
+
+	arr8 := []int{1,2,3,3,4}
+	arr9 := []int{1,2,3,4,5,6,8}
+	interstionArray := array.IntersectionArray(arr8,arr9)
+	fmt.Println(intersectionArray)
+
+
 }
+
+
